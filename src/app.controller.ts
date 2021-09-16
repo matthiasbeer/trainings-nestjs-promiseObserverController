@@ -1,5 +1,5 @@
 import { Controller, Get } from '@nestjs/common';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/internal/Observable';
 import { AppService } from './app.service';
 
 @Controller()
@@ -45,6 +45,11 @@ export class AppController {
   @Get('delayAwaitNonAsyncB')
   getDelAwaitNonB(): Promise<string> {
     return this.appService.getDelayedStringB()
+  }
+
+  @Get('awaitNonAwait')
+  getAwaitNonAwait(): Promise<any> {
+    return this.appService.getAwaitNonAwait()
   }
 
 
